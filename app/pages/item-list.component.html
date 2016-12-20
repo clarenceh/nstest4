@@ -1,0 +1,20 @@
+<ActionBar title="Test">
+    <ActionItem (tap)="onScroll()" ios.position="right" text="Scroll to Index"></ActionItem>
+</ActionBar>
+<GridLayout>
+
+    <RadListView id="testList" [items]="contacts | async" loadOnDemandMode="Manual" (loadMoreDataRequested)="onLoadMoreItemsRequested($event)" [listViewLayout]="layout">
+
+        <template tkListItemTemplate let-contact="item">
+            <StackLayout (tap)="toDetail()">
+                <Label [text]="contact.name"></Label>
+            </StackLayout>
+        </template>
+
+        <GridLayout *tkListLoadOnDemandTemplate class="loadOnDemandItemGridLayout">
+            <Label text="Load More" horizontalAlignment="center" verticalAlignment="center"></Label>
+        </GridLayout>
+
+    </RadListView>
+
+</GridLayout>
